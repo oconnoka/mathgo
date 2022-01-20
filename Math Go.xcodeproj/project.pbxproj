@@ -13,6 +13,8 @@
 		6C9E58342798CA3D004635CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58322798CA3D004635CD /* Main.storyboard */; };
 		6C9E58362798CA41004635CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58352798CA41004635CD /* Assets.xcassets */; };
 		6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58372798CA41004635CD /* LaunchScreen.storyboard */; };
+		6C9E58442798FA2D004635CD /* Placeholder in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58432798FA2D004635CD /* Placeholder */; };
+		6C9E58462798FA61004635CD /* Placeholder in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58452798FA61004635CD /* Placeholder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		6C9E58352798CA41004635CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C9E58382798CA41004635CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C9E583A2798CA41004635CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6C9E58432798FA2D004635CD /* Placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = Placeholder; sourceTree = "<group>"; };
+		6C9E58452798FA61004635CD /* Placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = Placeholder; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,41 @@
 		6C9E582B2798CA3D004635CD /* Math Go */ = {
 			isa = PBXGroup;
 			children = (
+				6C9E58422798F76A004635CD /* Controller */,
+				6C9E58412798F763004635CD /* View */,
+				6C9E58402798F758004635CD /* Model */,
 				6C9E582C2798CA3D004635CD /* AppDelegate.swift */,
 				6C9E582E2798CA3D004635CD /* SceneDelegate.swift */,
-				6C9E58302798CA3D004635CD /* ViewController.swift */,
 				6C9E58322798CA3D004635CD /* Main.storyboard */,
 				6C9E58352798CA41004635CD /* Assets.xcassets */,
 				6C9E58372798CA41004635CD /* LaunchScreen.storyboard */,
 				6C9E583A2798CA41004635CD /* Info.plist */,
 			);
 			path = "Math Go";
+			sourceTree = "<group>";
+		};
+		6C9E58402798F758004635CD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E58452798FA61004635CD /* Placeholder */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C9E58412798F763004635CD /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E58432798FA2D004635CD /* Placeholder */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		6C9E58422798F76A004635CD /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6C9E58302798CA3D004635CD /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -127,7 +157,9 @@
 			files = (
 				6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */,
 				6C9E58362798CA41004635CD /* Assets.xcassets in Resources */,
+				6C9E58442798FA2D004635CD /* Placeholder in Resources */,
 				6C9E58342798CA3D004635CD /* Main.storyboard in Resources */,
+				6C9E58462798FA61004635CD /* Placeholder in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
