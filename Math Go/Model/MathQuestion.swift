@@ -1,6 +1,6 @@
 import Foundation
 
-class MathQuestion {
+class MathQuestion: Codable {
     let question: String
     let answer: Int
     let level: Int
