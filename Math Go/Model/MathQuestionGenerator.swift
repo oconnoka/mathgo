@@ -19,9 +19,15 @@ class MathQuestionGenerator {
 
         // to ensure a whole number after division, multiply the previous number by divisor
         func handleDivision() {
-            let divisor = randomNumber()
+            var divisor = 0
+            // don't divide by 0
+            while (divisor == 0) {
+                divisor = randomNumber()
+            }
+            
             var dividend = question.popLast()!
             dividend = String(Int(dividend)! * divisor)
+            
             question.append(dividend)
             question.append("/")
             question.append(String(divisor))
@@ -43,7 +49,7 @@ class MathQuestionGenerator {
         }
 
         /* Note: questionString format is like this: -17 * -3230 / -38 + 37 * 1
-                expression format has parenthese: ((-17 * -3230) / -38) + (37 * 1)
+                expression format has parentheses: ((-17 * -3230) / -38) + (37 * 1)
          It could be nice to display the expression format, but it takes away from testing
          the player's knowledge of order of operations.
          */

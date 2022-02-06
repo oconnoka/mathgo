@@ -15,6 +15,13 @@ class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: MKMapView!
     
+    // TODO - move this to MapViewController
+    @IBSegueAction func toCatchView(_ coder: NSCoder) -> UIViewController? {
+        let playerLevel = Int.random(in: 1...5) // TODO - get player level
+        let mathQuestion = MathQuestionGenerator().getQuestion(level: playerLevel)
+        return CatchHostingController(coder: coder, rootView: CatchView(mathQuestion: mathQuestion))
+    }
+    
     fileprivate let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
