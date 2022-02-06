@@ -15,15 +15,9 @@ Source: https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-locatio
 class MapViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    
-    // TODO - temporary, for testing
-    @IBAction func deletePlayer(_ sender: Any) {
-        // TODO - Ask "Are You Sure?"
-        UserDefaults.standard.set(false, forKey: "playerExists")
-        UserDefaults.standard.removeObject(forKey: "player")
-        showStartScreen()
-    }
-    
+
+    @IBOutlet private var mapView: MKMapView!
+
     // TODO - temporary, for testing
     @IBAction func inventory(_ sender: Any) {
         appDelegate.player = try? UserDefaults.standard.getObject(forKey: "player", castTo: Player.self)
@@ -31,11 +25,8 @@ class MapViewController: UIViewController {
         inventoryVC.modalPresentationStyle = .fullScreen
         self.present(inventoryVC, animated: true)
     }
-    
-    @IBOutlet private var mapView: MKMapView!
-    
-    // TODO - move this to MapViewController
-    @IBSegueAction func toCatchView(_ coder: NSCoder) -> UIViewController? {
+
+    @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
         // Create MathQuestion and Beastie
         let player = appDelegate.player!
         let mathLevel = player.mathLevel
@@ -44,7 +35,7 @@ class MapViewController: UIViewController {
         // Catch Beastie Screen
         return CatchHostingController(coder: coder, beastie: beastie)
     }
-    
+
     fileprivate let locationManager = CLLocationManager()
 
     override func viewDidLoad() {

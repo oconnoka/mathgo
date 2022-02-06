@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-Wm-Os6" customClass="MapViewController">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fVw-Wm-Os6">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
@@ -25,6 +25,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Inventory"/>
+                                <connections>
+                                    <action selector="inventory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DAB-Gj-Pdv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-uF-nAc">
                                 <rect key="frame" x="31" y="102" width="103" height="31"/>
@@ -44,25 +47,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="catchME!"/>
                                 <connections>
-                                    <segue destination="lZg-hv-baY" kind="show" destinationCreationSelector="toCatchView:" id="joz-jk-4H8"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdJ-Xv-ifb">
-                                <rect key="frame" x="142" y="234" width="130" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="gray" title="DELETE PLAYER"/>
-                                <connections>
-                                    <action selector="deletePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3q-zA-lGb"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-nA-cTk">
-                                <rect key="frame" x="158" y="408" width="98" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="test caught"/>
-                                <connections>
-                                    <action selector="inventory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QdG-tg-nY7"/>
+                                    <segue destination="PYI-ot-RgU" kind="presentation" destinationCreationSelector="showCatchView:" id="1kU-FE-On9"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -103,6 +88,18 @@
                     <view key="view" contentMode="scaleToFill" id="nBp-0p-TEE">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdJ-Xv-ifb">
+                                <rect key="frame" x="142" y="753" width="130" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="DELETE PLAYER"/>
+                                <connections>
+                                    <action selector="deletePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3q-zA-lGb"/>
+                                    <action selector="deletePlayer:" destination="eyy-nF-foa" eventType="touchUpInside" id="Qxb-ga-DaX"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Iii-X9-jpn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
@@ -113,14 +110,12 @@
             <point key="canvasLocation" x="1862" y="-196"/>
         </scene>
         <!--Catch Hosting Controller-->
-        <scene sceneID="NvT-Lv-Y08">
+        <scene sceneID="q3F-RV-Acm">
             <objects>
-                <hostingController modalPresentationStyle="fullScreen" id="lZg-hv-baY" customClass="CatchHostingController" customModule="Math_Go" customModuleProvider="target" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="BOk-sC-FUH"/>
-                </hostingController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-J2-4Na" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <hostingController modalPresentationStyle="fullScreen" id="PYI-ot-RgU" customClass="CatchHostingController" customModule="Math_Go" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="30a-ZN-wuT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1862" y="481"/>
+            <point key="canvasLocation" x="1861" y="468"/>
         </scene>
     </scenes>
     <resources>
