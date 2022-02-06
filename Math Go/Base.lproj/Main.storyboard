@@ -29,6 +29,24 @@
                                     <segue destination="lZg-hv-baY" kind="show" destinationCreationSelector="toCatchView:" id="joz-jk-4H8"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gdJ-Xv-ifb">
+                                <rect key="frame" x="142" y="234" width="130" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="DELETE PLAYER"/>
+                                <connections>
+                                    <action selector="deletePlayer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H3q-zA-lGb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFU-nA-cTk">
+                                <rect key="frame" x="158" y="408" width="98" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="test caught"/>
+                                <connections>
+                                    <action selector="inventory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QdG-tg-nY7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>

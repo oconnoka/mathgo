@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		5246C88F27A1EE50002DAF53 /* MathQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C88E27A1EE50002DAF53 /* MathQuestion.swift */; };
 		5246C89127A1EE6F002DAF53 /* MathQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */; };
+		5250EA7027ADC17200FB3B0D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA6F27ADC17200FB3B0D /* StartView.swift */; };
+		5250EA7227ADC21900FB3B0D /* Beastie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA7127ADC21900FB3B0D /* Beastie.swift */; };
+		5250EA7427ADC22A00FB3B0D /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA7327ADC22A00FB3B0D /* Player.swift */; };
+		5250EA7827ADFDC000FB3B0D /* InventoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA7727ADFDC000FB3B0D /* InventoryView.swift */; };
+		5250EA7A27AE07CB00FB3B0D /* BeastieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA7927AE07CB00FB3B0D /* BeastieView.swift */; };
+		52995FDB27AF93A100D57985 /* SaveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52995FDA27AF93A100D57985 /* SaveObject.swift */; };
 		52C8F31827AB5D700083AFE8 /* CatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8F31727AB5D700083AFE8 /* CatchView.swift */; };
 		52C8F31B27AB61F90083AFE8 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 52C8F31A27AB61F90083AFE8 /* Introspect */; };
 		52C8F32027AB86470083AFE8 /* CatchHostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52C8F31F27AB86470083AFE8 /* CatchHostingController.swift */; };
@@ -18,12 +24,17 @@
 		6C9E58342798CA3D004635CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58322798CA3D004635CD /* Main.storyboard */; };
 		6C9E58362798CA41004635CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58352798CA41004635CD /* Assets.xcassets */; };
 		6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58372798CA41004635CD /* LaunchScreen.storyboard */; };
-		6C9E58442798FA2D004635CD /* Placeholder in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58432798FA2D004635CD /* Placeholder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5246C88E27A1EE50002DAF53 /* MathQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestion.swift; sourceTree = "<group>"; };
 		5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionGenerator.swift; sourceTree = "<group>"; };
+		5250EA6F27ADC17200FB3B0D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
+		5250EA7127ADC21900FB3B0D /* Beastie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Beastie.swift; sourceTree = "<group>"; };
+		5250EA7327ADC22A00FB3B0D /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		5250EA7727ADFDC000FB3B0D /* InventoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InventoryView.swift; sourceTree = "<group>"; };
+		5250EA7927AE07CB00FB3B0D /* BeastieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeastieView.swift; sourceTree = "<group>"; };
+		52995FDA27AF93A100D57985 /* SaveObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveObject.swift; sourceTree = "<group>"; };
 		52C8F31727AB5D700083AFE8 /* CatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchView.swift; sourceTree = "<group>"; };
 		52C8F31F27AB86470083AFE8 /* CatchHostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatchHostingController.swift; sourceTree = "<group>"; };
 		6C9E58292798CA3D004635CD /* Math Go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Math Go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,7 +45,6 @@
 		6C9E58352798CA41004635CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C9E58382798CA41004635CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C9E583A2798CA41004635CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C9E58432798FA2D004635CD /* Placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = Placeholder; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +96,9 @@
 			children = (
 				5246C88E27A1EE50002DAF53 /* MathQuestion.swift */,
 				5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */,
+				5250EA7127ADC21900FB3B0D /* Beastie.swift */,
+				5250EA7327ADC22A00FB3B0D /* Player.swift */,
+				52995FDA27AF93A100D57985 /* SaveObject.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -93,8 +106,10 @@
 		6C9E58412798F763004635CD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				6C9E58432798FA2D004635CD /* Placeholder */,
 				52C8F31727AB5D700083AFE8 /* CatchView.swift */,
+				5250EA6F27ADC17200FB3B0D /* StartView.swift */,
+				5250EA7727ADFDC000FB3B0D /* InventoryView.swift */,
+				5250EA7927AE07CB00FB3B0D /* BeastieView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -174,7 +189,6 @@
 			files = (
 				6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */,
 				6C9E58362798CA41004635CD /* Assets.xcassets in Resources */,
-				6C9E58442798FA2D004635CD /* Placeholder in Resources */,
 				6C9E58342798CA3D004635CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -187,12 +201,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C8F31827AB5D700083AFE8 /* CatchView.swift in Sources */,
+				5250EA7827ADFDC000FB3B0D /* InventoryView.swift in Sources */,
 				6C9E58312798CA3D004635CD /* ViewController.swift in Sources */,
 				6C9E582D2798CA3D004635CD /* AppDelegate.swift in Sources */,
+				5250EA7027ADC17200FB3B0D /* StartView.swift in Sources */,
 				52C8F32027AB86470083AFE8 /* CatchHostingController.swift in Sources */,
 				6C9E582F2798CA3D004635CD /* SceneDelegate.swift in Sources */,
 				5246C88F27A1EE50002DAF53 /* MathQuestion.swift in Sources */,
+				52995FDB27AF93A100D57985 /* SaveObject.swift in Sources */,
+				5250EA7A27AE07CB00FB3B0D /* BeastieView.swift in Sources */,
 				5246C89127A1EE6F002DAF53 /* MathQuestionGenerator.swift in Sources */,
+				5250EA7427ADC22A00FB3B0D /* Player.swift in Sources */,
+				5250EA7227ADC21900FB3B0D /* Beastie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

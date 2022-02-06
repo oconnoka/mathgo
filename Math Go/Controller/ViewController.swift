@@ -8,18 +8,41 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SwiftUI
 
 /* Notifies the locationManager when it has updated the position of the device
 Source: https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based */
 class ViewController: UIViewController {
     
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    
+    // TODO - temporary, for testing
+    @IBAction func deletePlayer(_ sender: Any) {
+        // TODO - Ask "Are You Sure?"
+        UserDefaults.standard.set(false, forKey: "playerExists")
+        UserDefaults.standard.removeObject(forKey: "player")
+        showStartScreen()
+    }
+    
+    // TODO - temporary, for testing
+    @IBAction func inventory(_ sender: Any) {
+        appDelegate.player = try? UserDefaults.standard.getObject(forKey: "player", castTo: Player.self)
+        let inventoryVC = UIHostingController(rootView: InventoryView().environmentObject(appDelegate.player))
+        inventoryVC.modalPresentationStyle = .fullScreen
+        self.present(inventoryVC, animated: true)
+    }
+    
     @IBOutlet private var mapView: MKMapView!
     
     // TODO - move this to MapViewController
     @IBSegueAction func toCatchView(_ coder: NSCoder) -> UIViewController? {
-        let playerLevel = Int.random(in: 1...5) // TODO - get player level
-        let mathQuestion = MathQuestionGenerator().getQuestion(level: playerLevel)
-        return CatchHostingController(coder: coder, rootView: CatchView(mathQuestion: mathQuestion))
+        // Create MathQuestion and Beastie
+        let player = appDelegate.player!
+        let mathLevel = player.mathLevel
+        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
+        let beastie = Beastie(id: player.beasties.count, name: "MathGO", mathQuestion: mathQuestion)
+        // Catch Beastie Screen
+        return CatchHostingController(coder: coder, beastie: beastie)
     }
     
     fileprivate let locationManager = CLLocationManager()
@@ -37,7 +60,20 @@ class ViewController: UIViewController {
 
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        // Display Start Screen if no player exists
+        if (!appDelegate.playerExists) {
+            showStartScreen()
+        }
+    }
 
+    private func showStartScreen() {
+        appDelegate.setPlayerExists(value: true)
+        appDelegate.player = Player()
+        let startVC = UIHostingController(rootView: StartView().environmentObject(appDelegate.player))
+        startVC.modalPresentationStyle = .fullScreen
+        self.present(startVC, animated: false)
+    }
 }
 
 /* Displays region at specified zoom level
