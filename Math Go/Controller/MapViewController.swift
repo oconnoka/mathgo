@@ -11,7 +11,7 @@ import CoreLocation
 
 /* Notifies the locationManager when it has updated the position of the device
 Source: https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based */
-class ViewController: UIViewController {
+class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: MKMapView!
     
@@ -56,7 +56,7 @@ private extension MKMapView {
 }
 
 /* Delegate method that gets the current location of the user */
-extension ViewController: CLLocationManagerDelegate {
+extension MapViewController: CLLocationManagerDelegate {
     internal func locationManager( _ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let span = MKCoordinateSpan(latitudeDelta: 0.014, longitudeDelta: 0.014)
