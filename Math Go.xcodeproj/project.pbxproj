@@ -24,11 +24,14 @@
 		6C9E58342798CA3D004635CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58322798CA3D004635CD /* Main.storyboard */; };
 		6C9E58362798CA41004635CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58352798CA41004635CD /* Assets.xcassets */; };
 		6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58372798CA41004635CD /* LaunchScreen.storyboard */; };
-		6C9E58442798FA2D004635CD /* Placeholder in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58432798FA2D004635CD /* Placeholder */; };
 		6CE3B48227AA344D00E9B596 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE3B48127AA344D00E9B596 /* ProfileViewController.swift */; };
+		6CEE389E27B3E81200303EB2 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CEE389C27B3E81100303EB2 /* DropDownCell.swift */; };
+		6CEE389F27B3E81200303EB2 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6CEE389D27B3E81200303EB2 /* DropDownCell.xib */; };
+		A34FD3F1F76B952483D83063 /* Pods_Math_Go.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C73E52071768400D9389070 /* Pods_Math_Go.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F2452FD9C3AD615D6BD8EF3 /* Pods-Math Go.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Go.release.xcconfig"; path = "Target Support Files/Pods-Math Go/Pods-Math Go.release.xcconfig"; sourceTree = "<group>"; };
 		5246C88E27A1EE50002DAF53 /* MathQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestion.swift; sourceTree = "<group>"; };
 		5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionGenerator.swift; sourceTree = "<group>"; };
 		5250EA6F27ADC17200FB3B0D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -47,8 +50,11 @@
 		6C9E58352798CA41004635CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C9E58382798CA41004635CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C9E583A2798CA41004635CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6C9E58432798FA2D004635CD /* Placeholder */ = {isa = PBXFileReference; lastKnownFileType = text; path = Placeholder; sourceTree = "<group>"; };
 		6CE3B48127AA344D00E9B596 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6CEE389C27B3E81100303EB2 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		6CEE389D27B3E81200303EB2 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		8C73E52071768400D9389070 /* Pods_Math_Go.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Math_Go.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DBB79B046ED9B8E5B3B87193 /* Pods-Math Go.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Math Go.debug.xcconfig"; path = "Target Support Files/Pods-Math Go/Pods-Math Go.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +63,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				52C8F31B27AB61F90083AFE8 /* Introspect in Frameworks */,
+				A34FD3F1F76B952483D83063 /* Pods_Math_Go.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +75,8 @@
 			children = (
 				6C9E582B2798CA3D004635CD /* Math Go */,
 				6C9E582A2798CA3D004635CD /* Products */,
+				E64749F508615A668B6B67C6 /* Pods */,
+				A66C76B7CCD4DDB0BE665C35 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -91,6 +100,8 @@
 				6C9E58352798CA41004635CD /* Assets.xcassets */,
 				6C9E58372798CA41004635CD /* LaunchScreen.storyboard */,
 				6C9E583A2798CA41004635CD /* Info.plist */,
+				6CEE389C27B3E81100303EB2 /* DropDownCell.swift */,
+				6CEE389D27B3E81200303EB2 /* DropDownCell.xib */,
 			);
 			path = "Math Go";
 			sourceTree = "<group>";
@@ -123,10 +134,26 @@
 			children = (
 				6CE3B48127AA344D00E9B596 /* ProfileViewController.swift */,
 				6C9E58302798CA3D004635CD /* MapViewController.swift */,
-				6C9E58302798CA3D004635CD /* ViewController.swift */,
 				52C8F31F27AB86470083AFE8 /* CatchHostingController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		A66C76B7CCD4DDB0BE665C35 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8C73E52071768400D9389070 /* Pods_Math_Go.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E64749F508615A668B6B67C6 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DBB79B046ED9B8E5B3B87193 /* Pods-Math Go.debug.xcconfig */,
+				2F2452FD9C3AD615D6BD8EF3 /* Pods-Math Go.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,9 +163,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6C9E583D2798CA41004635CD /* Build configuration list for PBXNativeTarget "Math Go" */;
 			buildPhases = (
+				63C9D005BC4109AD4CFE9A19 /* [CP] Check Pods Manifest.lock */,
 				6C9E58252798CA3D004635CD /* Sources */,
 				6C9E58262798CA3D004635CD /* Frameworks */,
 				6C9E58272798CA3D004635CD /* Resources */,
+				F5046E117A7144900AB20656 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,12 +223,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */,
+				6CEE389F27B3E81200303EB2 /* DropDownCell.xib in Resources */,
 				6C9E58362798CA41004635CD /* Assets.xcassets in Resources */,
 				6C9E58342798CA3D004635CD /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63C9D005BC4109AD4CFE9A19 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Math Go-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5046E117A7144900AB20656 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Math Go/Pods-Math Go-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Math Go/Pods-Math Go-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Math Go/Pods-Math Go-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6C9E58252798CA3D004635CD /* Sources */ = {
@@ -210,7 +282,7 @@
 				6C9E58312798CA3D004635CD /* MapViewController.swift in Sources */,
 				52C8F31827AB5D700083AFE8 /* CatchView.swift in Sources */,
 				5250EA7827ADFDC000FB3B0D /* InventoryView.swift in Sources */,
-				6C9E58312798CA3D004635CD /* ViewController.swift in Sources */,
+				6C9E58312798CA3D004635CD /* MapViewController.swift in Sources */,
 				6C9E582D2798CA3D004635CD /* AppDelegate.swift in Sources */,
 				5250EA7027ADC17200FB3B0D /* StartView.swift in Sources */,
 				52C8F32027AB86470083AFE8 /* CatchHostingController.swift in Sources */,
@@ -219,6 +291,7 @@
 				52995FDB27AF93A100D57985 /* SaveObject.swift in Sources */,
 				5250EA7A27AE07CB00FB3B0D /* BeastieView.swift in Sources */,
 				5246C89127A1EE6F002DAF53 /* MathQuestionGenerator.swift in Sources */,
+				6CEE389E27B3E81200303EB2 /* DropDownCell.swift in Sources */,
 				5250EA7427ADC22A00FB3B0D /* Player.swift in Sources */,
 				5250EA7227ADC21900FB3B0D /* Beastie.swift in Sources */,
 			);
@@ -364,12 +437,14 @@
 		};
 		6C9E583E2798CA41004635CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DBB79B046ED9B8E5B3B87193 /* Pods-Math Go.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59SS79G4ZU;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Math Go/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -384,7 +459,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kathleenkoconnsan.Math-Go";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -392,12 +470,14 @@
 		};
 		6C9E583F2798CA41004635CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F2452FD9C3AD615D6BD8EF3 /* Pods-Math Go.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 59SS79G4ZU;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Math Go/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -412,7 +492,10 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.kathleenkoconnsan.Math-Go";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
