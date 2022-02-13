@@ -48,3 +48,11 @@ class Player: ObservableObject, Codable {
         questionsCorrect = try container.decode(Int.self, forKey: .questionsCorrect)
     }
 }
+
+extension Player {
+    static let samplePlayer: Player = { () -> Player in
+        let player = Player()
+        player.beasties = Beastie.sampleData
+        return player
+    }()
+}

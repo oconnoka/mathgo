@@ -18,9 +18,7 @@ class MapViewController: UIViewController {
 
     @IBOutlet private var mapView: MKMapView!
 
-    // TODO - temporary, for testing
     @IBAction func inventory(_ sender: Any) {
-        appDelegate.player = try? UserDefaults.standard.getObject(forKey: "player", castTo: Player.self)
         let inventoryVC = UIHostingController(rootView: InventoryView().environmentObject(appDelegate.player))
         inventoryVC.modalPresentationStyle = .fullScreen
         self.present(inventoryVC, animated: true)
@@ -31,7 +29,7 @@ class MapViewController: UIViewController {
         let player = appDelegate.player!
         let mathLevel = player.mathLevel
         let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
-        let beastie = Beastie(id: player.beasties.count, name: "MathGO", mathQuestion: mathQuestion)
+        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion)
         // Catch Beastie Screen
         return CatchHostingController(coder: coder, beastie: beastie)
     }
@@ -51,7 +49,7 @@ class MapViewController: UIViewController {
 
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         // Display Start Screen if no player exists
         if (!appDelegate.playerExists) {
             showStartScreen()

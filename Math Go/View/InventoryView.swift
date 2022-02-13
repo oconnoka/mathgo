@@ -6,8 +6,6 @@ struct InventoryView: View {
     
     @EnvironmentObject var player: Player
 
-    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
-
     var body: some View {
         VStack {
             HStack {
@@ -18,7 +16,7 @@ struct InventoryView: View {
             }
             
             ScrollView {
-                LazyVGrid(columns: columns) {
+                LazyVGrid(columns: columns3) {
                     ForEach(player.beasties, id: \.id) { beastie in
                         BeastieView(beastie: beastie)
                             .padding()
@@ -33,6 +31,6 @@ struct InventoryView: View {
 
 struct InventoryView_Previews: PreviewProvider {
     static var previews: some View {
-        InventoryView()
+        InventoryView().environmentObject(Player.samplePlayer)
     }
 }

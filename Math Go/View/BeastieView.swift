@@ -20,6 +20,6 @@ struct BeastieView: View {
 
 struct BeastieView_Previews: PreviewProvider {
     static var previews: some View {
-        BeastieView(beastie: Beastie(id: 1, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: Int.random(in: 1...5))))
+        BeastieView(beastie: Beastie(id: 1, name: Beastie.allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: Int.random(in: 1...5))))
     }
 }

@@ -100,46 +100,54 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome, " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Aea-pb-p3f">
-                                <rect key="frame" x="128" y="145" width="80" height="21"/>
+                                <rect key="frame" x="101" y="380" width="80" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M9W-Lu-K9r">
-                                <rect key="frame" x="209" y="145" width="79" height="21"/>
+                                <rect key="frame" x="182" y="380" width="79" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9v-9h-aJe">
-                                <rect key="frame" x="20" y="411" width="374" height="31"/>
+                                <rect key="frame" x="20" y="315" width="374" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="SELECT AVATAR"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Change Avatar"/>
+                                <connections>
+                                    <segue destination="gMC-g1-vYc" kind="show" destinationCreationSelector="showAvatarChange:" id="egX-t1-sPh"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beastie Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX8-zb-a1p">
-                                <rect key="frame" x="128" y="189" width="112" height="21"/>
+                                <rect key="frame" x="101" y="424" width="112" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="playerBeastieCount" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UHe-VQ-HFQ">
-                                <rect key="frame" x="245" y="188" width="149" height="21"/>
+                                <rect key="frame" x="218" y="423" width="149" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PgU-8y-ybp">
+                                <rect key="frame" x="87" y="145" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Iii-X9-jpn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="A1L-6z-qPY"/>
                     <connections>
+                        <outlet property="avatarImageView" destination="PgU-8y-ybp" id="6hv-0B-ei8"/>
                         <outlet property="playerBeastieCount" destination="UHe-VQ-HFQ" id="zs5-sd-ewF"/>
                         <outlet property="playerName" destination="M9W-Lu-K9r" id="paD-fY-rFE"/>
                         <outlet property="selectAvatar" destination="o9v-9h-aJe" id="biG-Ve-ELl"/>
@@ -148,6 +156,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NQ-wH-Rcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1860.8695652173915" y="-196.20535714285714"/>
+        </scene>
+        <!--Hosting Controller-->
+        <scene sceneID="TOe-OR-Rjf">
+            <objects>
+                <hostingController id="gMC-g1-vYc" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="iQm-6I-9du"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="u9s-bn-i0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2639" y="-196"/>
         </scene>
         <!--Catch Hosting Controller-->
         <scene sceneID="q3F-RV-Acm">
