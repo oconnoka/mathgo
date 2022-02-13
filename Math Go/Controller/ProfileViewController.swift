@@ -9,17 +9,39 @@ import UIKit
 import SwiftUI
 
 class ProfileViewController: UIViewController {
+    @IBOutlet weak var selectAvatar: UIButton!
+    @IBOutlet weak var playerName: UILabel!
+    @IBOutlet weak var playerBeastieCount: UILabel!
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let userName = appDelegate.player.name
+        playerName.text = userName
+        
+        let numberOfBeasties = appDelegate.player.beasties.count
+        playerBeastieCount.text = "\(numberOfBeasties)"
+        
+    }
+     
+    @IBAction func showAlert() {
+        let alert = UIAlertController(title: "Delete Player", message: "Are you sure?", preferredStyle: .alert)
+        let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) -> Void in
+            print("Yes button tapped")
+            self.deletePlayer(self.appDelegate)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped") }
+        alert.addAction(yesAction)
+        alert.addAction(cancelAction)
 
-        // Do any additional setup after loading the view.
+        present(alert, animated: true)
+
     }
 
-    @IBAction func deletePlayer(_ sender: Any) {
-        // TODO - Ask "Are You Sure?"
+    func deletePlayer(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "playerExists")
         UserDefaults.standard.removeObject(forKey: "player")
         showStartScreen()
