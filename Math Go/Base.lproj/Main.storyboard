@@ -119,14 +119,7 @@
                                 <color key="backgroundColor" systemColor="systemGray5Color"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="SELECT AVATAR"/>
-                                <connections>
-                                    <action selector="showAvatarOption:" destination="eyy-nF-foa" eventType="touchUpInside" id="y9s-h7-CH2"/>
-                                </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="avatar1" translatesAutoresizingMaskIntoConstraints="NO" id="3GA-Lg-cA8">
-                                <rect key="frame" x="169" y="304" width="77" height="78"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Beastie Count:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KX8-zb-a1p">
                                 <rect key="frame" x="128" y="189" width="112" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -147,10 +140,9 @@
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="A1L-6z-qPY"/>
                     <connections>
-                        <outlet property="playerAvatar" destination="3GA-Lg-cA8" id="9eX-75-adB"/>
                         <outlet property="playerBeastieCount" destination="UHe-VQ-HFQ" id="zs5-sd-ewF"/>
                         <outlet property="playerName" destination="M9W-Lu-K9r" id="paD-fY-rFE"/>
-                        <outlet property="selectAvatar" destination="o9v-9h-aJe" id="uJe-Cj-aqJ"/>
+                        <outlet property="selectAvatar" destination="o9v-9h-aJe" id="biG-Ve-ELl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6NQ-wH-Rcz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -167,7 +159,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="avatar1" width="528" height="560"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
