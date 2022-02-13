@@ -14,14 +14,20 @@ struct Beastie: Codable {
 }
 
 extension Beastie {
+
+    static let allBeasties = [
+        "AntBeastie", "BatBeastie", "DarkBeastie", "DragonBeastie", "GreenBeastie",
+        "GroundBeastie", "IceBeastie", "MarshmallowBeastie", "PlantBeastie", "RockBeastie", "UFOBeastie"
+    ]
+
     static let sampleData: [Beastie] =
     [
-        Beastie(id: 1, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: 1)),
-        Beastie(id: 2, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: 2)),
-        Beastie(id: 3, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: 3)),
-        Beastie(id: 4, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: 4)),
-        Beastie(id: 5, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: 5)),
+        Beastie(id: 1, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 1)),
+        Beastie(id: 2, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 2)),
+        Beastie(id: 3, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 3)),
+        Beastie(id: 4, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 4)),
+        Beastie(id: 5, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 5)),
     ]
-    
-    static let rando: Beastie = Beastie(id: 1, name: "MathGO", mathQuestion: MathQuestionGenerator().getQuestion(level: Int.random(in: 1...5)))
+
+    static let random: Beastie = Beastie(id: Int.random(in:1...allBeasties.count), name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: Int.random(in: 1...5)))
 }

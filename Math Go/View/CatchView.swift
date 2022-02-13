@@ -32,26 +32,21 @@ struct CatchView: View {
             }
             Spacer()
             
-            // Beastie image
+            // Beastie
+            Text(beastie.name)
             Image(beastie.name)
-                .resizable()
-                .scaledToFit()
+                .fit()
                 .frame(width: 120, height: 120)
             Spacer()
             
             // Math question
             Text(beastie.mathQuestion.question)
-                .font(.system(size: 24))
-                .lineLimit(1)
+                .questionStyle()
             
             // Answer entry
             HStack {
                 TextField("Enter Answer", text: $answer)
-                    .textFieldStyle(.roundedBorder)
-                    .keyboardType(.numberPad)
-                    .font(.system(size: 24))
-                    .lineLimit(1)
-                    .frame(width: 200)
+                    .numeric()
                     .introspectTextField {
                         textField in textField.becomeFirstResponder()
                     }
@@ -131,6 +126,6 @@ struct ResultAlert: Identifiable {
 
 struct CatchView_Previews: PreviewProvider {
     static var previews: some View {
-        CatchView(beastie: Beastie.rando)
+        CatchView(beastie: Beastie.random)
     }
 }

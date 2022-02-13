@@ -12,6 +12,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var selectAvatar: UIButton!
     @IBOutlet weak var playerName: UILabel!
     @IBOutlet weak var playerBeastieCount: UILabel!
+    @IBOutlet weak var avatarImageView: UIImageView!
 
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
@@ -25,7 +26,17 @@ class ProfileViewController: UIViewController {
         playerBeastieCount.text = "\(numberOfBeasties)"
         
     }
-     
+
+    override func viewWillAppear(_ animated: Bool) {
+        avatarImageView.image = UIImage(named: appDelegate.player.avatar)
+    }
+
+    @IBSegueAction func showAvatarChange(_ coder: NSCoder) -> UIViewController? {
+        // It would be nice if this didn't take up the whole screen, but
+        // if I present it modally, it doesn't change the avatar on the profile screen
+        return AvatarChangeHostingController(coder: coder)
+    }
+
     @IBAction func showAlert() {
         let alert = UIAlertController(title: "Delete Player", message: "Are you sure?", preferredStyle: .alert)
         let yesAction = UIAlertAction(title: "Yes", style: .destructive) { (action) -> Void in
@@ -44,17 +55,14 @@ class ProfileViewController: UIViewController {
     func deletePlayer(_ sender: Any) {
         UserDefaults.standard.set(false, forKey: "playerExists")
         UserDefaults.standard.removeObject(forKey: "player")
-        showStartScreen()
-    }
+        appDelegate.playerExists = false
 
-    // Copied from MapViewController
-    // TODO - code clean-up
-    private func showStartScreen() {
-        appDelegate.setPlayerExists(value: true)
-        appDelegate.player = Player()
-        let startVC = UIHostingController(rootView: StartView().environmentObject(appDelegate.player))
-        startVC.modalPresentationStyle = .fullScreen
-        self.present(startVC, animated: false)
+        // Go back to Map screen, which will present Start Screen
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 
     /*
