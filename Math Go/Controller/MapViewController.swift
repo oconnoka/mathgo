@@ -46,7 +46,7 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
         locationManager.requestWhenInUseAuthorization()
-
+        mapView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +62,28 @@ class MapViewController: UIViewController {
         let startVC = UIHostingController(rootView: StartView().environmentObject(appDelegate.player))
         startVC.modalPresentationStyle = .fullScreen
         self.present(startVC, animated: false)
+    }
+}
+
+/* Displays player avatar instead of the blue dot
+ Source: https://guides.codepath.org/ios/Using-MapKit */
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseID = "myAnnotationView"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+        }
+        
+        // TO DO - Get selected avatar to appear here, for now it is just a static avatar
+        let pinImage = UIImage(named: "Avatar5")
+        let targetSize = CGSize(width: 100, height: 100)
+        let scaledImage = pinImage?.scalePreservingAspectRatio(
+            targetSize: targetSize
+        )
+        annotationView?.image = scaledImage
+
+        return annotationView
     }
 }
 
@@ -93,3 +115,34 @@ extension MapViewController: CLLocationManagerDelegate {
 }
 
 
+/* Resizes UIImage without scretching
+ Source: https://www.advancedswift.com/resize-uiimage-no-stretching-swift/ */
+extension UIImage {
+    func scalePreservingAspectRatio(targetSize: CGSize) -> UIImage {
+        // Determine the scale factor that preserves aspect ratio
+        let widthRatio = targetSize.width / size.width
+        let heightRatio = targetSize.height / size.height
+        
+        let scaleFactor = min(widthRatio, heightRatio)
+        
+        // Compute the new image size that preserves aspect ratio
+        let scaledImageSize = CGSize(
+            width: size.width * scaleFactor,
+            height: size.height * scaleFactor
+        )
+
+        // Draw and return the resized UIImage
+        let renderer = UIGraphicsImageRenderer(
+            size: scaledImageSize
+        )
+
+        let scaledImage = renderer.image { _ in
+            self.draw(in: CGRect(
+                origin: .zero,
+                size: scaledImageSize
+            ))
+        }
+        
+        return scaledImage
+    }
+}
