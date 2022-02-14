@@ -2,30 +2,19 @@ import SwiftUI
 
 struct InventoryView: View {
     
-    @Environment(\.presentationMode) var mode: Binding<PresentationMode>
-    
     @EnvironmentObject var player: Player
-
+    
     var body: some View {
-        VStack {
-            HStack {
-                Button("<") {
-                    self.mode.wrappedValue.dismiss()
+        ScrollView {
+            LazyVGrid(columns: columns3) {
+                ForEach(player.beasties, id: \.id) { beastie in
+                    BeastieView(beastie: beastie)
+                        .frame(height: 100)
+                        .padding()
                 }
-                Spacer()
             }
-            
-            ScrollView {
-                LazyVGrid(columns: columns3) {
-                    ForEach(player.beasties, id: \.id) { beastie in
-                        BeastieView(beastie: beastie)
-                            .padding()
-                    }
-                }
-                .padding()
-            }
+            .padding()
         }
-        .padding()
     }
 }
 

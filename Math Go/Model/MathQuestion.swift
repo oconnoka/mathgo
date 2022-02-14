@@ -12,6 +12,10 @@ class MathQuestion: Codable {
     }
 }
 
+extension MathQuestion {
+    static let blank: MathQuestion = MathQuestion(question: "", answer: 0, level: 1)
+}
+
 struct Level {
     let operations: Array<String>
     let numOperations: Int

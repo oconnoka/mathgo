@@ -21,10 +21,8 @@ class MapViewController: UIViewController {
     
     @IBOutlet private var mapView: MKMapView!
     
-    @IBAction func inventory(_ sender: Any) {
-        let inventoryVC = UIHostingController(rootView: InventoryView().environmentObject(appDelegate.player))
-        inventoryVC.modalPresentationStyle = .fullScreen
-        self.present(inventoryVC, animated: true)
+    @IBSegueAction func showInventory(_ coder: NSCoder) -> UIViewController? {
+        return UIHostingController(coder: coder, rootView: InventoryTabView().environmentObject(appDelegate.player))
     }
     
     @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
