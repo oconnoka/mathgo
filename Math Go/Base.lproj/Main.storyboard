@@ -26,7 +26,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Inventory"/>
                                 <connections>
-                                    <action selector="inventory:" destination="BYZ-38-t0r" eventType="touchUpInside" id="DAB-Gj-Pdv"/>
+                                    <segue destination="qnD-Mr-Xq0" kind="show" destinationCreationSelector="showInventory:" id="SGR-kq-bPO"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ahO-uF-nAc">
@@ -166,6 +166,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="u9s-bn-i0H" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2639" y="-196"/>
+        </scene>
+        <!--Inventory Hosting Controller-->
+        <scene sceneID="gEb-9o-1CQ">
+            <objects>
+                <hostingController id="qnD-Mr-Xq0" userLabel="Inventory Hosting Controller" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AgL-lx-q0i"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VpY-13-2xo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1042" y="909"/>
         </scene>
         <!--Catch Hosting Controller-->
         <scene sceneID="q3F-RV-Acm">

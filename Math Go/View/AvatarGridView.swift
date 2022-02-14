@@ -6,7 +6,7 @@ struct AvatarGridView: View {
     
     @State private var avatarSelected: Int!
     
-    let numberOfAvatars = 5
+    let numberOfAvatars = 6
     
     var body: some View {
         LazyVGrid(columns: columns3) {

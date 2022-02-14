@@ -33,6 +33,15 @@ extension Text {
             .font(.system(size: 24))
             .lineLimit(1)
     }
+    
+    // Removes "Beastie" from display name text
+    init(beastieName: String) {
+        if beastieName.count < "Beastie".count {
+            self.init(" ")
+        } else {
+            self.init(beastieName.dropLast("Beastie".count))
+        }
+    }
 }
 
 extension TextField {
@@ -54,10 +63,22 @@ extension TextField {
     }
 }
 
+extension Color {
+    static let silhouetteGray = Color(red: 95/255, green: 98/255, blue: 103/255)
+}
+
 extension Image {
     func fit() -> some View {
         self
             .resizable()
+            .scaledToFit()
+    }
+    
+    func silhouette() -> some View {
+        self
+            .resizable()
+            .renderingMode(.template)
+            .foregroundColor(.silhouetteGray)
             .scaledToFit()
     }
 }

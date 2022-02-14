@@ -14,12 +14,12 @@ struct Beastie: Codable {
 }
 
 extension Beastie {
-
+    
     static let allBeasties = [
         "AntBeastie", "BatBeastie", "DarkBeastie", "DragonBeastie", "GreenBeastie",
-        "GroundBeastie", "IceBeastie", "MarshmallowBeastie", "PlantBeastie", "RockBeastie", "UFOBeastie"
+        "GroundBeastie", "IceBeastie", "MarshieBeastie", "PlantBeastie", "RockBeastie", "UFOBeastie"
     ]
-
+    
     static let sampleData: [Beastie] =
     [
         Beastie(id: 1, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 1)),
@@ -28,6 +28,6 @@ extension Beastie {
         Beastie(id: 4, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 4)),
         Beastie(id: 5, name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: 5)),
     ]
-
+    
     static let random: Beastie = Beastie(id: Int.random(in:1...allBeasties.count), name: allBeasties.randomElement()!, mathQuestion: MathQuestionGenerator().getQuestion(level: Int.random(in: 1...5)))
 }
