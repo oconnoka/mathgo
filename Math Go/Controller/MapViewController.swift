@@ -17,6 +17,7 @@ class MapViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var annotationView: MKAnnotationView? // for Avatar image on map, see extension
+    var targets = [ARItem]() // Property for storing targets
     
     @IBOutlet private var mapView: MKMapView!
     
@@ -49,6 +50,9 @@ class MapViewController: UIViewController {
         locationManager.startUpdatingLocation()
         locationManager.requestWhenInUseAuthorization()
         mapView.delegate = self
+        
+        mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
+        setupLocations()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +70,22 @@ class MapViewController: UIViewController {
         let startVC = UIHostingController(rootView: StartView().environmentObject(appDelegate.player))
         startVC.modalPresentationStyle = .fullScreen
         self.present(startVC, animated: false)
+    }
+    
+    func setupLocations() {
+      let firstTarget = ARItem(itemDescription: "wolf", location: CLLocation(latitude: 37.7856479, longitude: -122.4196999))
+      targets.append(firstTarget)
+        
+      let secondTarget = ARItem(itemDescription: "bear", location: CLLocation(latitude: 37.7850798, longitude: -122.4055807))
+      targets.append(secondTarget)
+        
+      let thirdTarget = ARItem(itemDescription: "dragon", location: CLLocation(latitude: 37.7850798, longitude: -122.4055807))
+      targets.append(thirdTarget)
+        
+        for item in targets {
+          let annotation = MapAnnotation(location: item.location.coordinate, item: item)
+          self.mapView.addAnnotation(annotation)
+        }
     }
 }
 
