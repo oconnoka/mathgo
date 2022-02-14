@@ -11,19 +11,21 @@ import CoreLocation
 import SwiftUI
 
 /* Notifies the locationManager when it has updated the position of the device
-Source: https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based */
+ Source: https://www.raywenderlich.com/764-augmented-reality-ios-tutorial-location-based */
 class MapViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
+    var annotationView: MKAnnotationView? // for Avatar image on map, see extension
+    
     @IBOutlet private var mapView: MKMapView!
-
+    
     @IBAction func inventory(_ sender: Any) {
         let inventoryVC = UIHostingController(rootView: InventoryView().environmentObject(appDelegate.player))
         inventoryVC.modalPresentationStyle = .fullScreen
         self.present(inventoryVC, animated: true)
     }
-
+    
     @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
         // Create MathQuestion and Beastie
         let player = appDelegate.player!
@@ -33,9 +35,9 @@ class MapViewController: UIViewController {
         // Catch Beastie Screen
         return CatchHostingController(coder: coder, beastie: beastie)
     }
-
+    
     fileprivate let locationManager = CLLocationManager()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Set initial location to Tampa
@@ -46,16 +48,18 @@ class MapViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
         locationManager.requestWhenInUseAuthorization()
-
+        mapView.delegate = self
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         // Display Start Screen if no player exists
         if (!appDelegate.playerExists) {
             showStartScreen()
+        } else {
+            annotationView?.image = scaledAvatar()
         }
     }
-
+    
     private func showStartScreen() {
         appDelegate.setPlayerExists(value: true)
         appDelegate.player = Player()
@@ -65,19 +69,40 @@ class MapViewController: UIViewController {
     }
 }
 
+/* Displays player avatar instead of the blue dot
+ Source: https://guides.codepath.org/ios/Using-MapKit */
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        let reuseID = "myAnnotationView"
+        annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseID)
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
+        }
+        
+        annotationView?.image = scaledAvatar()
+        
+        return annotationView
+    }
+    
+    // Return scaled Avatar image
+    func scaledAvatar() -> UIImage {
+        return UIImage.scaleImage(imageName: appDelegate.player.avatar, size: 100)
+    }
+}
+
 /* Displays region at specified zoom level
-Source: https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started */
+ Source: https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started */
 private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
+    func centerToLocation(
+        _ location: CLLocation,
+        regionRadius: CLLocationDistance = 1000
+    ) {
+        let coordinateRegion = MKCoordinateRegion(
+            center: location.coordinate,
+            latitudinalMeters: regionRadius,
+            longitudinalMeters: regionRadius)
+        setRegion(coordinateRegion, animated: true)
+    }
 }
 
 /* Delegate method that gets the current location of the user */
@@ -91,5 +116,3 @@ extension MapViewController: CLLocationManagerDelegate {
         mapView.showsUserLocation = true
     }
 }
-
-
