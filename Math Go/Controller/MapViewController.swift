@@ -17,7 +17,6 @@ class MapViewController: UIViewController {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     var annotationView: MKAnnotationView? // for Avatar image on map, see extension
-    var targets = [ARItem]() // Property for storing targets
     
     @IBOutlet private var mapView: MKMapView!
     
@@ -25,23 +24,23 @@ class MapViewController: UIViewController {
         return UIHostingController(coder: coder, rootView: InventoryTabView().environmentObject(appDelegate.player))
     }
     
-    @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
-        // Create MathQuestion and Beastie
-        let player = appDelegate.player!
-        let mathLevel = player.mathLevel
-        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
-        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion)
-        // Catch Beastie Screen
-        return CatchHostingController(coder: coder, beastie: beastie)
-    }
+//    @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
+//        // Create MathQuestion and Beastie
+//        let player = appDelegate.player!
+//        let mathLevel = player.mathLevel
+//        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
+//        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion, location: coordinateOne)
+//        // Catch Beastie Screen
+//        return CatchHostingController(coder: coder, beastie: beastie)
+//    }
     
     fileprivate let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Set initial location to Tampa
+        //Set initial location to Tampa
         //let initialLocation = CLLocation(latitude: 27.9506, longitude: -82.4572)
-        // mapView.centerToLocation(initialLocation)
+        //mapView.centerToLocation(initialLocation)
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -50,7 +49,8 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
-        setupLocations()
+        let myBeastie = Beastie.allBeasties.randomElement()!
+        addPin(myBeastie)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,24 +70,32 @@ class MapViewController: UIViewController {
         self.present(startVC, animated: false)
     }
     
-    func setupLocations() {
-      let firstTarget = ARItem(itemDescription: "wolf", location: CLLocation(latitude: 37.7856479, longitude: -122.4196999))
-      targets.append(firstTarget)
-        
-      let secondTarget = ARItem(itemDescription: "bear", location: CLLocation(latitude: 37.7850798, longitude: -122.4055807))
-      targets.append(secondTarget)
-        
-      let thirdTarget = ARItem(itemDescription: "dragon", location: CLLocation(latitude: 37.7850798, longitude: -122.4055807))
-      targets.append(thirdTarget)
-        
-        for item in targets {
-          let annotation = MapAnnotation(location: item.location.coordinate, item: item)
-          self.mapView.addAnnotation(annotation)
+    // Create Math Question and Beastie
+    func addBeastie(_ beastieName: String, _ beastieLocation: CLLocationCoordinate2D) -> Beastie {
+        let player = appDelegate.player!
+        let mathLevel = player.mathLevel
+        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
+        let locationCoordinate = Coordinate(latitude: beastieLocation.latitude, longitude: beastieLocation.longitude)
+        let beastie = Beastie(id: player.beasties.count, name: beastieName, mathQuestion: mathQuestion, location: locationCoordinate)
+        return beastie
+    }
+    
+    // Lets you know annotation has been tapped and then shows the catch beastie screen
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        if let annotation = view.annotation {
+            if let title = annotation.title! {
+                print("Tapped \(title)")
+                if (title != "My Location") {
+                    let myBeastie = addBeastie(title, annotation.coordinate)
+                    showCatchView(myBeastie)
+                    //TODO: Need to make it so that Beastie disappears from Map once it is caught
+                }
+            }
         }
     }
 }
 
-/* Displays player avatar instead of the blue dot
+/* Displays player avatar instead of the blue dot and displays beastie assets
  Source: https://guides.codepath.org/ios/Using-MapKit */
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -97,14 +105,61 @@ extension MapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
         }
         
-        annotationView?.image = scaledAvatar()
-        
+        // Return scaled beastie image matching the title of the annotation
+        switch annotationView?.annotation?.title {
+            case "My Location":
+                annotationView?.image = scaledAvatar()
+            case "AntBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "AntBeastie", size: 100)
+            case "BatBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "BatBeastie", size: 100)
+            case "DarkBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "DarkBeastie", size: 100)
+            case "DragonBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "DragonBeastie", size: 100)
+            case "GreenBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "GreenBeastie", size: 100)
+            case "GroundBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "GroundBeastie", size: 100)
+            case "IceBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "IceBeastie", size: 100)
+            case "MarshieBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "MarshieBeastie", size: 100)
+            case "PlantBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "PlantBeastie", size: 100)
+            case "RockBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "RockBeastie", size: 100)
+            case "UFOBeastie":
+                annotationView?.image = UIImage.scaleImage(imageName: "UFOBeastie", size: 100)
+            default:
+                annotationView?.image = UIImage(named: "pin")
+        }
         return annotationView
     }
     
     // Return scaled Avatar image
     func scaledAvatar() -> UIImage {
         return UIImage.scaleImage(imageName: appDelegate.player.avatar, size: 100)
+    }
+    
+    // Add pin for beastie to specified location
+    func addPin(_ beastieName: String) {
+        print("addPin has been called")
+        let annotation = MKPointAnnotation()
+        // TODO: Create function that randomly generates coordinates within certain radius of user's location where beastie pins will be displayed
+        // TODO: Create timer that will time the appearance and disappearance of multiple beastie pins to the map
+        let locationCoordinate = CLLocationCoordinate2D(latitude: 37.7856479, longitude: -122.4196999)
+        annotation.coordinate = locationCoordinate
+        annotation.title = beastieName
+        mapView.addAnnotation(annotation)
+    }
+    
+    // Display the Catch Beastie Screen
+    private func showCatchView(_ beastie: Beastie) {
+        print("showCatchView has been called")
+        let vc = CatchHostingController(beastie: beastie)
+        vc!.modalPresentationStyle = .fullScreen
+        present(vc!, animated: true)
     }
 }
 

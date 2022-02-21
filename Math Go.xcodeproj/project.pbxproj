@@ -30,8 +30,7 @@
 		6C9E58342798CA3D004635CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58322798CA3D004635CD /* Main.storyboard */; };
 		6C9E58362798CA41004635CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58352798CA41004635CD /* Assets.xcassets */; };
 		6C9E58392798CA41004635CD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C9E58372798CA41004635CD /* LaunchScreen.storyboard */; };
-		6CC0C44927B9F1ED0033EFDA /* ARItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0C44827B9F1ED0033EFDA /* ARItem.swift */; };
-		6CC0C44B27B9F3580033EFDA /* MapAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0C44A27B9F3580033EFDA /* MapAnnotation.swift */; };
+		6CC0C44F27C12C000033EFDA /* Coordinate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CC0C44E27C12C000033EFDA /* Coordinate.swift */; };
 		6CE3B48227AA344D00E9B596 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CE3B48127AA344D00E9B596 /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,8 +59,7 @@
 		6C9E58352798CA41004635CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6C9E58382798CA41004635CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6C9E583A2798CA41004635CD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6CC0C44827B9F1ED0033EFDA /* ARItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARItem.swift; sourceTree = "<group>"; };
-		6CC0C44A27B9F3580033EFDA /* MapAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapAnnotation.swift; sourceTree = "<group>"; };
+		6CC0C44E27C12C000033EFDA /* Coordinate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinate.swift; sourceTree = "<group>"; };
 		6CE3B48127AA344D00E9B596 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,8 +116,7 @@
 				5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */,
 				5250EA7327ADC22A00FB3B0D /* Player.swift */,
 				52995FDA27AF93A100D57985 /* SaveObject.swift */,
-				6CC0C44827B9F1ED0033EFDA /* ARItem.swift */,
-				6CC0C44A27B9F3580033EFDA /* MapAnnotation.swift */,
+				6CC0C44E27C12C000033EFDA /* Coordinate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -229,16 +226,15 @@
 			files = (
 				6CE3B48227AA344D00E9B596 /* ProfileViewController.swift in Sources */,
 				6C9E58312798CA3D004635CD /* MapViewController.swift in Sources */,
-				6CC0C44B27B9F3580033EFDA /* MapAnnotation.swift in Sources */,
 				52C8F31827AB5D700083AFE8 /* CatchView.swift in Sources */,
 				52C8260827B8BD6900B3EA03 /* AvatarChangeHostingController.swift in Sources */,
 				5250EA7827ADFDC000FB3B0D /* InventoryView.swift in Sources */,
-				6CC0C44927B9F1ED0033EFDA /* ARItem.swift in Sources */,
 				6C9E58312798CA3D004635CD /* MapViewController.swift in Sources */,
 				5286095727B9F78F00DFD209 /* InventoryTabView.swift in Sources */,
 				6C9E582D2798CA3D004635CD /* AppDelegate.swift in Sources */,
 				5250EA7027ADC17200FB3B0D /* StartView.swift in Sources */,
 				52C8260627B8B24700B3EA03 /* AvatarChangeView.swift in Sources */,
+				6CC0C44F27C12C000033EFDA /* Coordinate.swift in Sources */,
 				52C8F32027AB86470083AFE8 /* CatchHostingController.swift in Sources */,
 				6C9E582F2798CA3D004635CD /* SceneDelegate.swift in Sources */,
 				5246C88F27A1EE50002DAF53 /* MathQuestion.swift in Sources */,
