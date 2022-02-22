@@ -6,9 +6,9 @@ class CatchHostingController: UIHostingController<AnyView> {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let beastie: Beastie
     
-    init?(coder: NSCoder, beastie: Beastie) {
+    init?(beastie: Beastie) {
         self.beastie = beastie
-        super.init(coder: coder, rootView: AnyView(CatchView(beastie: self.beastie).environmentObject(appDelegate.player)))
+        super.init(rootView: AnyView(CatchView(beastie: self.beastie).environmentObject(appDelegate.player)))
     }
     
     required init?(coder: NSCoder) {
