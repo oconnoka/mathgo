@@ -24,15 +24,15 @@ class MapViewController: UIViewController {
         return UIHostingController(coder: coder, rootView: InventoryTabView().environmentObject(appDelegate.player))
     }
     
-//    @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
-//        // Create MathQuestion and Beastie
-//        let player = appDelegate.player!
-//        let mathLevel = player.mathLevel
-//        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
-//        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion, location: coordinateOne)
-//        // Catch Beastie Screen
-//        return CatchHostingController(coder: coder, beastie: beastie)
-//    }
+    @IBSegueAction func showCatchView(_ coder: NSCoder) -> UIViewController? {
+        // Create MathQuestion and Beastie
+        let player = appDelegate.player!
+        let mathLevel = player.mathLevel
+        let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
+        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion, location: coordinateOne)
+        // Catch Beastie Screen
+        return CatchHostingController(coder: coder, beastie: beastie)
+    }
     
     fileprivate let locationManager = CLLocationManager()
     
@@ -157,9 +157,9 @@ extension MapViewController: MKMapViewDelegate {
     // Display the Catch Beastie Screen
     private func showCatchView(_ beastie: Beastie) {
         print("showCatchView has been called")
-        let vc = CatchHostingController(beastie: beastie)
-        vc!.modalPresentationStyle = .fullScreen
-        present(vc!, animated: true)
+        let vc = UIHostingController(rootView: CatchView(beastie: beastie).environmentObject(appDelegate.player))
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true)
     }
 }
 
