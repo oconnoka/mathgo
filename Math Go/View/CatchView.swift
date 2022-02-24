@@ -73,6 +73,9 @@ struct CatchView: View {
                 )
             )
         }
+        .fullScreenCover(isPresented: $arModeOn) {
+            ARView()
+        }
     }
     
     func evaluateAnswer() {
@@ -127,5 +130,18 @@ struct ResultAlert: Identifiable {
 struct CatchView_Previews: PreviewProvider {
     static var previews: some View {
         CatchView(beastie: Beastie.random)
+    }
+}
+
+// MARK: - NavigationIndicator
+struct NavigationIndicator: UIViewControllerRepresentable {
+    typealias UIViewControllerType = ARViewController
+    
+    func makeUIViewController(context: Context) -> ARViewController {
+        return ARViewController()
+    }
+    
+    func updateUIViewController(_ uiViewController: NavigationIndicator.UIViewControllerType,
+                                context: UIViewControllerRepresentableContext<NavigationIndicator>) {
     }
 }
