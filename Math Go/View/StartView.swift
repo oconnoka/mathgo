@@ -33,9 +33,8 @@ struct StartView: View {
             
             // Start button
             Button(action: startGame) {
-                Text("Start").capsuleButton()
+                Text("Start")
             }
-            .confirmStyle()
             .disabled(self.name.isEmpty || self.player.avatar.isEmpty)
         }
         .padding()
