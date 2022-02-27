@@ -7,19 +7,19 @@ struct BeastiedexView: View {
     @State var caughtBeasties = Set<String>()
     
     var body: some View {
-        
         ScrollView {
             LazyVGrid(columns: columns3) {
-                ForEach (Beastie.allBeasties.indices) { idx in
-                    BeastieView(
-                        beastie: Beastie(id: idx + 1, name: Beastie.allBeasties[idx], mathQuestion: MathQuestion.blank, location: coordinateOne),
-                        showSilhouette: caughtBeasties.contains(Beastie.allBeasties[idx]) ? false : true)
+                ForEach(Beastie.allBeasties.indices) { idx in
+                    BeastieView(beastie: Beastie(id: idx + 1,
+                                                 name: Beastie.allBeasties[idx],
+                                                 mathQuestion: MathQuestion.blank,
+                                                 location: coordinateOne),
+                                showSilhouette: caughtBeasties.contains(Beastie.allBeasties[idx]) ? false : true)
                         .frame(height: 100)
                         .padding()
                 }
             }
         }
-        .padding()
         .onAppear { getCaughtBeasties() }
     }
     

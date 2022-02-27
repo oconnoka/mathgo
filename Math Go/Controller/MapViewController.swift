@@ -55,7 +55,8 @@ class MapViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Display Start Screen if no player exists
-        if (!appDelegate.playerExists) {
+        let playerExists = UserDefaults.standard.bool(forKey: "playerExists")
+        if (!playerExists) {
             showStartScreen()
         } else {
             annotationView?.image = scaledAvatar()
@@ -63,7 +64,6 @@ class MapViewController: UIViewController {
     }
     
     private func showStartScreen() {
-        appDelegate.setPlayerExists(value: true)
         appDelegate.player = Player()
         let startVC = UIHostingController(rootView: StartView().environmentObject(appDelegate.player))
         startVC.modalPresentationStyle = .fullScreen
@@ -157,7 +157,7 @@ extension MapViewController: MKMapViewDelegate {
     // Display the Catch Beastie Screen
     private func showCatchView(_ beastie: Beastie) {
         print("showCatchView has been called")
-        let vc = UIHostingController(rootView: CatchView(beastie: beastie).environmentObject(appDelegate.player))
+        let vc = UIHostingController(rootView: CatchView(beastie: .constant(beastie)).environmentObject(appDelegate.player))
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true)
     }

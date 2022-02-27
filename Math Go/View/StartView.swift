@@ -9,18 +9,17 @@ struct StartView: View {
     @State private var name: String = ""
     
     var body: some View {
-        VStack {
+        ScrollView {
             // Title
             Text("Create a player")
                 .titleTop()
-                .padding(.bottom, 20)
+                .padding(.bottom, 10)
             
             // Avatar
             Text("Pick an avatar")
                 .headerStyle()
             
             AvatarGridView()
-                .padding()
             
             // Name
             Text("Enter a name")
@@ -28,19 +27,26 @@ struct StartView: View {
             
             TextField("Username", text: $name)
                 .oneLine()
+                .disableAutocorrection(true)
             
             Spacer()
             
             // Start button
-            Button("Start") {
-                self.player.name = self.name
-                self.player.save()
-                self.mode.wrappedValue.dismiss() // back to Map screen
+            Button(action: startGame) {
+                Text("Start").capsuleButton()
             }
             .confirmStyle()
             .disabled(self.name.isEmpty || self.player.avatar.isEmpty)
         }
         .padding()
+        .ignoresSafeArea(.keyboard)
+    }
+    
+    func startGame() {
+        self.player.name = self.name
+        self.player.save()
+        UserDefaults.standard.set(true, forKey: "playerExists")
+        self.mode.wrappedValue.dismiss() // back to Map screen
     }
 }
 

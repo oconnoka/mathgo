@@ -13,7 +13,6 @@ struct InventoryView: View {
                         .padding()
                 }
             }
-            .padding()
         }
     }
 }

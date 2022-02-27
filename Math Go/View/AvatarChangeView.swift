@@ -8,19 +8,9 @@ struct AvatarChangeView: View {
     
     var body: some View {
         VStack {
-            Text("Pick an avatar")
-                .headerStyle()
-            
+            Text("Pick an avatar").headerStyle()
             AvatarGridView()
-            Button("Confirm") {
-                player.save()
-                self.mode.wrappedValue.dismiss() // back to Map screen
-            }
-            .disabled(self.player.avatar.isEmpty)
-        }
-        .interactiveDismissDisabled()
-        .onAppear {
-            self.player.avatar = ""
+            Spacer()
         }
         .padding()
     }
