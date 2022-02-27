@@ -32,20 +32,16 @@ struct StartView: View {
             Spacer()
             
             // Start button
-            Button(action: startGame) {
-                Text("Start")
+            Button("Start") {
+                self.player.name = self.name
+                self.player.save()
+                UserDefaults.standard.set(true, forKey: "playerExists")
+                self.mode.wrappedValue.dismiss() // back to Map screen
             }
             .disabled(self.name.isEmpty || self.player.avatar.isEmpty)
         }
         .padding()
         .ignoresSafeArea(.keyboard)
-    }
-    
-    func startGame() {
-        self.player.name = self.name
-        self.player.save()
-        UserDefaults.standard.set(true, forKey: "playerExists")
-        self.mode.wrappedValue.dismiss() // back to Map screen
     }
 }
 
