@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5242C11D27CABA1C0072BFF1 /* QuestionAnswerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5242C11C27CABA1C0072BFF1 /* QuestionAnswerView.swift */; };
 		5246C88F27A1EE50002DAF53 /* MathQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C88E27A1EE50002DAF53 /* MathQuestion.swift */; };
 		5246C89127A1EE6F002DAF53 /* MathQuestionGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */; };
 		5250EA7027ADC17200FB3B0D /* StartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5250EA6F27ADC17200FB3B0D /* StartView.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5242C11C27CABA1C0072BFF1 /* QuestionAnswerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionAnswerView.swift; sourceTree = "<group>"; };
 		5246C88E27A1EE50002DAF53 /* MathQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestion.swift; sourceTree = "<group>"; };
 		5246C89027A1EE6F002DAF53 /* MathQuestionGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathQuestionGenerator.swift; sourceTree = "<group>"; };
 		5250EA6F27ADC17200FB3B0D /* StartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartView.swift; sourceTree = "<group>"; };
@@ -128,15 +130,16 @@
 		6C9E58412798F763004635CD /* View */ = {
 			isa = PBXGroup;
 			children = (
-				52C8260527B8B24700B3EA03 /* AvatarChangeView.swift */,
+				5250EA6F27ADC17200FB3B0D /* StartView.swift */,
 				52C825FB27B8874700B3EA03 /* AvatarGridView.swift */,
-				5286095827B9F80C00DFD209 /* BeastiedexView.swift */,
+				52C8260527B8B24700B3EA03 /* AvatarChangeView.swift */,
 				5250EA7927AE07CB00FB3B0D /* BeastieView.swift */,
 				52C8F31727AB5D700083AFE8 /* CatchView.swift */,
+				52FD646E27C712BF0095E8A5 /* ARView.swift */,
+				5242C11C27CABA1C0072BFF1 /* QuestionAnswerView.swift */,
 				5286095627B9F78F00DFD209 /* InventoryTabView.swift */,
 				5250EA7727ADFDC000FB3B0D /* InventoryView.swift */,
-				5250EA6F27ADC17200FB3B0D /* StartView.swift */,
-				52FD646E27C712BF0095E8A5 /* ARView.swift */,
+				5286095827B9F80C00DFD209 /* BeastiedexView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				5246C89127A1EE6F002DAF53 /* MathQuestionGenerator.swift in Sources */,
 				5286095927B9F80C00DFD209 /* BeastiedexView.swift in Sources */,
 				5250EA7427ADC22A00FB3B0D /* Player.swift in Sources */,
+				5242C11D27CABA1C0072BFF1 /* QuestionAnswerView.swift in Sources */,
 				5250EA7227ADC21900FB3B0D /* Beastie.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
