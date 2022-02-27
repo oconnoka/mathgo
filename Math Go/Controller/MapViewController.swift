@@ -16,7 +16,7 @@ class MapViewController: UIViewController {
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
-    var annotationView: MKAnnotationView? // for Avatar image on map, see extension
+    var annotationView: MKAnnotationView?
     
     var thumbnailImageByAnnotation = [NSValue : UIImage]()
     
@@ -33,7 +33,11 @@ class MapViewController: UIViewController {
         let player = appDelegate.player!
         let mathLevel = player.mathLevel
         let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
-        let beastie = Beastie(id: player.beasties.count, name: Beastie.allBeasties.randomElement()!, mathQuestion: mathQuestion, location: coordinateOne)
+        let beastie = Beastie(id: player.beasties.count,
+                              name: Beastie.allBeasties.randomElement()!,
+                              mathQuestion: mathQuestion,
+                              location: coordinateOne)
+        
         // Catch Beastie Screen
         return CatchHostingController(coder: coder, beastie: beastie)
     }
@@ -51,7 +55,11 @@ class MapViewController: UIViewController {
         
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
         
-        var locationsSFRandom = [CLLocationCoordinate2DMake(37.7856479, -122.4196999), CLLocationCoordinate2DMake(37.793836, -122.4109757), CLLocationCoordinate2DMake(37.7799909, -122.4132483), CLLocationCoordinate2DMake(37.78235, -122.4079104), CLLocationCoordinate2DMake(37.7951775, -122.4049674)]
+        var locationsSFRandom = [CLLocationCoordinate2DMake(37.7856479, -122.4196999),
+                                 CLLocationCoordinate2DMake(37.793836, -122.4109757),
+                                 CLLocationCoordinate2DMake(37.7799909, -122.4132483),
+                                 CLLocationCoordinate2DMake(37.78235, -122.4079104),
+                                 CLLocationCoordinate2DMake(37.7951775, -122.4049674)]
         
         var num = 0
         while num != 5 {
@@ -59,7 +67,10 @@ class MapViewController: UIViewController {
             let myBeastie = Beastie.allBeasties.randomElement()!
             print(myBeastie)
             let randomLocation = locationsSFRandom.randomElement()!
-            self.addAnnotationWithThumbnailImage(thumbnail: UIImage.scaleImage(imageName: myBeastie, size: 100), myBeastie: myBeastie, myLocation: randomLocation)
+            self.addAnnotationWithThumbnailImage(thumbnail: UIImage.scaleImage(imageName: myBeastie, size: 100),
+                                                 myBeastie: myBeastie,
+                                                 myLocation: randomLocation)
+            
             if let index = locationsSFRandom.firstIndex(of: randomLocation) {
                 locationsSFRandom.remove(at: index)
             }
@@ -96,8 +107,12 @@ class MapViewController: UIViewController {
         let player = appDelegate.player!
         let mathLevel = player.mathLevel
         let mathQuestion = MathQuestionGenerator().getQuestion(level: mathLevel)
-        let locationCoordinate = Coordinate(latitude: beastieLocation.latitude, longitude: beastieLocation.longitude)
-        let beastie = Beastie(id: player.beasties.count, name: beastieName, mathQuestion: mathQuestion, location: locationCoordinate)
+        let locationCoordinate = Coordinate(latitude: beastieLocation.latitude,
+                                            longitude: beastieLocation.longitude)
+        let beastie = Beastie(id: player.beasties.count,
+                              name: beastieName,
+                              mathQuestion: mathQuestion,
+                              location: locationCoordinate)
         return beastie
     }
     
@@ -148,13 +163,14 @@ extension MapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
         }
         
-        let mapAnnotations: [String: UIImage] = ["My Location": scaledAvatar(), "AntBeastie": UIImage.scaleImage(imageName: "AntBeastie", size: 100), "BatBeastie": UIImage.scaleImage(imageName: "BatBeastie", size: 100), "DarkBeastie": UIImage.scaleImage(imageName: "DarkBeastie", size: 100), "DragonBeastie": UIImage.scaleImage(imageName: "DragonBeastie", size: 100), "GreenBeastie": UIImage.scaleImage(imageName: "GreenBeastie", size: 100), "GroundBeastie": UIImage.scaleImage(imageName: "GroundBeastie", size: 100), "IceBeastie": UIImage.scaleImage(imageName: "IceBeastie", size: 100), "MarshieBeastie": UIImage.scaleImage(imageName: "MarshieBeastie", size: 100), "PlantBeastie": UIImage.scaleImage(imageName: "PlantBeastie", size: 100), "RockBeastie": UIImage.scaleImage(imageName: "RockBeastie", size: 100), "UFOBeastie": UIImage.scaleImage(imageName: "UFOBeastie", size: 100)]
-        
-        for key in mapAnnotations.keys {
-            if (annotationView?.annotation?.title == key){
-                annotationView?.image = mapAnnotations[key]
+        if let annotationTitle = annotationView?.annotation?.title {
+            if annotationTitle == "My Location" {
+                annotationView?.image = scaledAvatar()
+            } else {
+                annotationView?.image = UIImage.scaleImage(imageName: annotationTitle!, size: 100)
             }
         }
+        
         return annotationView
     }
     
@@ -175,14 +191,10 @@ extension MapViewController: MKMapViewDelegate {
 /* Displays region at specified zoom level
  Source: https://www.raywenderlich.com/7738344-mapkit-tutorial-getting-started */
 private extension MKMapView {
-    func centerToLocation(
-        _ location: CLLocation,
-        regionRadius: CLLocationDistance = 1000
-    ) {
-        let coordinateRegion = MKCoordinateRegion(
-            center: location.coordinate,
-            latitudinalMeters: regionRadius,
-            longitudinalMeters: regionRadius)
+    func centerToLocation(_ location: CLLocation, regionRadius: CLLocationDistance = 1000) {
+        let coordinateRegion = MKCoordinateRegion(center: location.coordinate,
+                                                  latitudinalMeters: regionRadius,
+                                                  longitudinalMeters: regionRadius)
         setRegion(coordinateRegion, animated: true)
     }
 }
