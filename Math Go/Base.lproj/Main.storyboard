@@ -42,10 +42,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9QW-0y-vCZ">
-                                <rect key="frame" x="165" y="326" width="85" height="31"/>
+                                <rect key="frame" x="148" y="324" width="119" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="catchME!"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Catch Me!"/>
                                 <connections>
                                     <segue destination="PYI-ot-RgU" kind="presentation" destinationCreationSelector="showCatchView:" id="1kU-FE-On9"/>
                                 </connections>

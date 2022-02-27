@@ -18,6 +18,10 @@ class MapViewController: UIViewController {
     
     var annotationView: MKAnnotationView? // for Avatar image on map, see extension
     
+    var thumbnailImageByAnnotation = [NSValue : UIImage]()
+    
+    //var userLocation: CLLocation?
+    
     @IBOutlet private var mapView: MKMapView!
     
     @IBSegueAction func showInventory(_ coder: NSCoder) -> UIViewController? {
@@ -38,10 +42,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //Set initial location to Tampa
-        //let initialLocation = CLLocation(latitude: 27.9506, longitude: -82.4572)
-        //mapView.centerToLocation(initialLocation)
-        
+
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         locationManager.startUpdatingLocation()
@@ -49,16 +50,36 @@ class MapViewController: UIViewController {
         mapView.delegate = self
         
         mapView.userTrackingMode = MKUserTrackingMode.followWithHeading
-        let myBeastie = Beastie.allBeasties.randomElement()!
-        addPin(myBeastie)
+        
+        var locationsSFRandom = [CLLocationCoordinate2DMake(37.7856479, -122.4196999), CLLocationCoordinate2DMake(37.793836, -122.4109757), CLLocationCoordinate2DMake(37.7799909, -122.4132483), CLLocationCoordinate2DMake(37.78235, -122.4079104), CLLocationCoordinate2DMake(37.7951775, -122.4049674)]
+        
+        var num = 0
+        while num != 5 {
+            num += 1
+            let myBeastie = Beastie.allBeasties.randomElement()!
+            print(myBeastie)
+            let randomLocation = locationsSFRandom.randomElement()!
+            self.addAnnotationWithThumbnailImage(thumbnail: UIImage.scaleImage(imageName: myBeastie, size: 100), myBeastie: myBeastie, myLocation: randomLocation)
+            if let index = locationsSFRandom.firstIndex(of: randomLocation) {
+                locationsSFRandom.remove(at: index)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
         // Display Start Screen if no player exists
         if (!appDelegate.playerExists) {
             showStartScreen()
+//            if (annotationView?.annotation?.coordinate == mapView.userLocation.coordinate){
+//                annotationView?.image = scaledAvatar()
+//            }
         } else {
-            annotationView?.image = scaledAvatar()
+            if annotationView?.annotation?.title == "My Location"{
+                annotationView?.image = scaledAvatar()
+            }
+//            if (annotationView?.annotation?.coordinate == mapView.userLocation.coordinate){
+//                annotationView?.image = scaledAvatar()
+//            }
         }
     }
     
@@ -80,7 +101,7 @@ class MapViewController: UIViewController {
         return beastie
     }
     
-    // Lets you know annotation has been tapped and then shows the catch beastie screen
+    // Lets you know annotation has been tapped and then shows the catch beastie screen, beastie disappears once you click on it
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         if let annotation = view.annotation {
             if let title = annotation.title! {
@@ -88,10 +109,32 @@ class MapViewController: UIViewController {
                 if (title != "My Location") {
                     let myBeastie = addBeastie(title, annotation.coordinate)
                     showCatchView(myBeastie)
-                    //TODO: Need to make it so that Beastie disappears from Map once it is caught
+                    mapView.deselectAnnotation(view.annotation, animated: true)
+                    mapView.removeAnnotation(annotation)
                 }
             }
         }
+    }
+    
+    // Use different images for each annotation
+    // Source: https://guides.codepath.org/ios/Using-MapKit
+    func addAnnotationWithThumbnailImage(thumbnail: UIImage, myBeastie: String, myLocation: CLLocationCoordinate2D) {
+        let annotation = MKPointAnnotation()
+        let locationCoordinate = myLocation
+        //print(CLLocationCoordinate2DMake(mapView.userLocation.coordinate.latitude, mapView.userLocation.coordinate.longitude))
+        annotation.coordinate = locationCoordinate
+        annotation.title = myBeastie
+        thumbnailImageByAnnotation[NSValue(nonretainedObject: annotation)] = thumbnail
+        mapView.addAnnotation(annotation)
+    }
+
+    func getOurThumbnailForAnnotation(annotation : MKAnnotation) -> UIImage?{
+        return thumbnailImageByAnnotation[NSValue(nonretainedObject: annotation)]
+    }
+
+    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
+        annotationView?.image = getOurThumbnailForAnnotation(annotation: annotation)
+        return annotationView
     }
 }
 
@@ -105,34 +148,12 @@ extension MapViewController: MKMapViewDelegate {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
         }
         
-        // Return scaled beastie image matching the title of the annotation
-        switch annotationView?.annotation?.title {
-            case "My Location":
-                annotationView?.image = scaledAvatar()
-            case "AntBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "AntBeastie", size: 100)
-            case "BatBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "BatBeastie", size: 100)
-            case "DarkBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "DarkBeastie", size: 100)
-            case "DragonBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "DragonBeastie", size: 100)
-            case "GreenBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "GreenBeastie", size: 100)
-            case "GroundBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "GroundBeastie", size: 100)
-            case "IceBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "IceBeastie", size: 100)
-            case "MarshieBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "MarshieBeastie", size: 100)
-            case "PlantBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "PlantBeastie", size: 100)
-            case "RockBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "RockBeastie", size: 100)
-            case "UFOBeastie":
-                annotationView?.image = UIImage.scaleImage(imageName: "UFOBeastie", size: 100)
-            default:
-                annotationView?.image = UIImage(named: "pin")
+        let mapAnnotations: [String: UIImage] = ["My Location": scaledAvatar(), "AntBeastie": UIImage.scaleImage(imageName: "AntBeastie", size: 100), "BatBeastie": UIImage.scaleImage(imageName: "BatBeastie", size: 100), "DarkBeastie": UIImage.scaleImage(imageName: "DarkBeastie", size: 100), "DragonBeastie": UIImage.scaleImage(imageName: "DragonBeastie", size: 100), "GreenBeastie": UIImage.scaleImage(imageName: "GreenBeastie", size: 100), "GroundBeastie": UIImage.scaleImage(imageName: "GroundBeastie", size: 100), "IceBeastie": UIImage.scaleImage(imageName: "IceBeastie", size: 100), "MarshieBeastie": UIImage.scaleImage(imageName: "MarshieBeastie", size: 100), "PlantBeastie": UIImage.scaleImage(imageName: "PlantBeastie", size: 100), "RockBeastie": UIImage.scaleImage(imageName: "RockBeastie", size: 100), "UFOBeastie": UIImage.scaleImage(imageName: "UFOBeastie", size: 100)]
+        
+        for key in mapAnnotations.keys {
+            if (annotationView?.annotation?.title == key){
+                annotationView?.image = mapAnnotations[key]
+            }
         }
         return annotationView
     }
@@ -140,18 +161,6 @@ extension MapViewController: MKMapViewDelegate {
     // Return scaled Avatar image
     func scaledAvatar() -> UIImage {
         return UIImage.scaleImage(imageName: appDelegate.player.avatar, size: 100)
-    }
-    
-    // Add pin for beastie to specified location
-    func addPin(_ beastieName: String) {
-        print("addPin has been called")
-        let annotation = MKPointAnnotation()
-        // TODO: Create function that randomly generates coordinates within certain radius of user's location where beastie pins will be displayed
-        // TODO: Create timer that will time the appearance and disappearance of multiple beastie pins to the map
-        let locationCoordinate = CLLocationCoordinate2D(latitude: 37.7856479, longitude: -122.4196999)
-        annotation.coordinate = locationCoordinate
-        annotation.title = beastieName
-        mapView.addAnnotation(annotation)
     }
     
     // Display the Catch Beastie Screen
@@ -187,5 +196,13 @@ extension MapViewController: CLLocationManagerDelegate {
         
         mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
+        //userLocation = locations.last!
     }
+}
+
+/* Adds Equatable to CLLocationCoordinate2D
+ Source: https://gist.github.com/soffes/b085c108f9ad1c804a13 */
+extension CLLocationCoordinate2D: Equatable {}
+public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+    return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
 }
