@@ -6,6 +6,7 @@ class AvatarChangeHostingController: UIHostingController<AnyView> {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     required init?(coder: NSCoder) {
+        print(appDelegate.player.avatar) // Added this because app started crashing here
         super.init(coder: coder, rootView: AnyView(AvatarChangeView().environmentObject(appDelegate.player)))
     }
     

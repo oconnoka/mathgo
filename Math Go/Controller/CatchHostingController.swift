@@ -8,7 +8,9 @@ class CatchHostingController: UIHostingController<AnyView> {
     
     init?(coder: NSCoder, beastie: Beastie) {
         self.beastie = beastie
-        super.init(coder: coder, rootView: AnyView(CatchView(beastie: self.beastie).environmentObject(appDelegate.player)))
+        super.init(coder: coder, rootView: AnyView(
+            CatchView(beastie: .constant(self.beastie)).environmentObject(appDelegate.player))
+        )
     }
     
     required init?(coder: NSCoder) {
@@ -17,7 +19,7 @@ class CatchHostingController: UIHostingController<AnyView> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     

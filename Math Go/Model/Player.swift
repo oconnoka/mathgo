@@ -1,5 +1,4 @@
 import Foundation
-import SwiftUI
 
 class Player: ObservableObject, Codable {
     @Published var name: String = ""
@@ -7,11 +6,12 @@ class Player: ObservableObject, Codable {
     @Published var beasties: [Beastie] = [Beastie]()
     @Published var mathLevel: Int = 1
     @Published var questionsCorrect: Int = 0
-
+    @Published var arModeOn: Bool = false
+    
     func save() {
         try? UserDefaults.standard.setObject(self, forKey: "player")
     }
-
+    
     func caught(beastie: Beastie) {
         self.beasties.append(beastie)
         self.questionsCorrect += 1
@@ -20,11 +20,11 @@ class Player: ObservableObject, Codable {
     }
     
     /* Encode/Decode Player object for storage
-       Source: https://www.hackingwithswift.com/books/ios-swiftui/encoding-an-observableobject-class */
+     Source: https://www.hackingwithswift.com/books/ios-swiftui/encoding-an-observableobject-class */
     enum PlayerKeys: CodingKey {
-        case name, avatar, beasties, mathLevel, questionsCorrect
+        case name, avatar, beasties, mathLevel, questionsCorrect, arModeOn
     }
-
+    
     init() { }
     
     func encode(to encoder: Encoder) throws {
@@ -36,8 +36,9 @@ class Player: ObservableObject, Codable {
         try container.encode(mathLevel, forKey: .mathLevel)
         try container.encode(mathLevel, forKey: .mathLevel)
         try container.encode(questionsCorrect, forKey: .questionsCorrect)
+        try container.encode(arModeOn, forKey: .arModeOn)
     }
-
+    
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: PlayerKeys.self)
         
@@ -46,6 +47,7 @@ class Player: ObservableObject, Codable {
         beasties = try container.decode([Beastie].self, forKey: .beasties)
         mathLevel = try container.decode(Int.self, forKey: .mathLevel)
         questionsCorrect = try container.decode(Int.self, forKey: .questionsCorrect)
+        arModeOn = try container.decode(Bool.self, forKey: .arModeOn)
     }
 }
 

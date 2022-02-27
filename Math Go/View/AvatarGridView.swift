@@ -15,6 +15,7 @@ struct AvatarGridView: View {
                     action: {
                         self.avatarSelected = index
                         self.player.avatar = "Avatar\(index)"
+                        self.player.save()
                     },
                     label: {
                         Image("Avatar\(index)")

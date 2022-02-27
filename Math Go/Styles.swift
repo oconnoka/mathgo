@@ -34,6 +34,12 @@ extension Text {
             .lineLimit(1)
     }
     
+    func capsuleButton() -> some View {
+        self
+            .padding([.leading, .trailing], 10)
+            .padding([.top, .bottom], 5)
+    }
+    
     // Removes "Beastie" from display name text
     init(beastieName: String) {
         if beastieName.count < "Beastie".count {
