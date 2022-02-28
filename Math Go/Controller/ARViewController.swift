@@ -67,4 +67,14 @@ class ARViewController: UIViewController, ARSCNViewDelegate {
         super.viewWillDisappear(animated)
         arScnView.session.pause()
     }
+    
+    // MARK: - ARSCNViewDelegate
+    func sessionWasInterrupted(_ session: ARSession) {}
+    
+    func sessionInterruptionEnded(_ session: ARSession) {}
+    
+    func session(_ session: ARSession, didFailWithError error: Error) {}
+    
+    func session(_ session: ARSession, cameraDidChangeTrackingState camera: ARCamera) {}
+    
 }
