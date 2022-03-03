@@ -23,9 +23,6 @@ class MapViewController: UIViewController {
     let SPAWN_INVERTAL: TimeInterval = 15 // spawn Beasties every 15 seconds
     let MAX_BEASTIES: Int = 5 // maximum number of Beasties on Map at a time
     
-    //var thumbnailImageByAnnotation = [NSValue : UIImage]() // TODO - is this necessary?
-    //var annotationView: MKAnnotationView? // TODO - is this necessary?
-    
     var userLocation: CLLocation?
     var avatarAnnotationView: MKAnnotationView?
     
@@ -147,27 +144,6 @@ class MapViewController: UIViewController {
                                       longitude: from.coordinate.longitude + dLongitude)
     }
     
-    // Use different images for each annotation
-    // Source: https://guides.codepath.org/ios/Using-MapKit
-//    func addAnnotationWithThumbnailImage(thumbnail: UIImage, myBeastie: String, myLocation: CLLocationCoordinate2D) {
-//        let annotation = MKPointAnnotation()
-//        let locationCoordinate = myLocation
-//        annotation.coordinate = locationCoordinate
-//        annotation.title = myBeastie
-//        thumbnailImageByAnnotation[NSValue(nonretainedObject: annotation)] = thumbnail
-//        mapView.addAnnotation(annotation)
-//    }
-    
-//    func getOurThumbnailForAnnotation(annotation : MKAnnotation) -> UIImage? {
-//        print("Does this code ever get called? =============================")
-//        return thumbnailImageByAnnotation[NSValue(nonretainedObject: annotation)]
-//    }
-    
-//    func mapView(mapView: MKMapView!, viewForAnnotation annotation: MKAnnotation!) -> MKAnnotationView! {
-//        print("Does this code ever get called? =============================")
-//        annotationView?.image = getOurThumbnailForAnnotation(annotation: annotation)
-//        return annotationView
-//    }
 }
 
 /* Displays player avatar instead of the blue dot and displays beastie assets
